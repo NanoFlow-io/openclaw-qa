@@ -1,0 +1,48 @@
+{
+  "name": "{{PROJECT_NAME}}",
+  "version": "1.0.0",
+  "description": "OpenClaw QA RelOps System — AI-powered release operations dashboard",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "test": "tsx --test tests/**/*.test.ts",
+    "migrate": "tsx src/db.ts migrate"
+  },
+  "dependencies": {
+    "express": "^5.2.0",
+    "pg": "^8.20.0",
+    "ws": "^8.20.0",
+    "dotenv": "^17.0.0",
+    "express-rate-limit": "^8.3.0",
+    "bcrypt": "^6.0.0",
+
+    "_comment_openai": "Include if AI provider is OpenAI or Both:",
+    "openai": "^6.30.0",
+
+    "_comment_anthropic": "Include if AI provider is Anthropic or Both:",
+    "@anthropic-ai/sdk": "^0.40.0"
+  },
+  "devDependencies": {
+    "typescript": "^6.0.0",
+    "tsx": "^4.21.0",
+    "@types/express": "^5.0.0",
+    "@types/pg": "^8.0.0",
+    "@types/ws": "^8.0.0",
+    "@types/bcrypt": "^5.0.0"
+  },
+
+  "_conditional_dependencies": {
+    "_comment": "Add these based on user selections:",
+    "playwright": { "package": "@playwright/test", "version": "^1.50.0", "when": "Playwright runner selected" },
+    "k6": { "note": "k6 is a CLI binary, not an npm package. User installs separately." },
+    "maestro": { "note": "Maestro is a CLI binary. Install via: curl -Ls 'https://get.maestro.mobile.dev' | bash" },
+    "vite": { "package": "vite", "version": "^8.0.0", "when": "Dashboard selected", "dev": true },
+    "react": { "package": "react", "version": "^19.0.0", "when": "Dashboard selected" },
+    "react-dom": { "package": "react-dom", "version": "^19.0.0", "when": "Dashboard selected" },
+    "react-router-dom": { "package": "react-router-dom", "version": "^7.0.0", "when": "Dashboard selected" },
+    "tailwindcss": { "package": "tailwindcss", "version": "^4.0.0", "when": "Dashboard selected", "dev": true },
+    "lucide-react": { "package": "lucide-react", "version": "^1.7.0", "when": "Dashboard selected" }
+  }
+}
